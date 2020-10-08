@@ -23,6 +23,7 @@ module.exports = {
     {
       files: ['*.ts'],
       rules: {
+        'class-methods-use-this': 'off',
         'no-plusplus': 'off',
         'import/prefer-default-export': 'off',
       }
