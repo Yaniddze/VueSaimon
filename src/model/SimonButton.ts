@@ -1,15 +1,16 @@
 export class SimonButton {
   constructor(
-    color: string, title: string, onPlay: () => void
+    color: string, title: string
   ) {
     this.Color = color;
     this.Title = title;
-    this.PlayAudio = onPlay;
   }
 
   public Color: string;
 
   public Title: string;
 
-  public PlayAudio: () => void;
+  public PlayAudio() {
+    console.log('Not implemented')
+  };
 }
