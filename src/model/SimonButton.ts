@@ -1,8 +1,11 @@
 export class SimonButton {
-  constructor(color: string, sound: HTMLAudioElement, title: string) {
+  constructor(
+    color: string, sound: HTMLAudioElement, title: string, onPlay: () => void
+  ) {
     this.Color = color;
     this.audio = sound;
     this.Title = title;
+    this.PlayAudio = onPlay;
   }
 
   public Color: string;
@@ -11,7 +14,5 @@ export class SimonButton {
 
   private audio: HTMLAudioElement;
 
-  public PlayAudio() {
-    this.audio.play();
-  }
+  public PlayAudio: () => void;
 }
