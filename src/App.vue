@@ -120,6 +120,7 @@
         setTimeout(() => {
           this.locked = false;
         }, this.round * this.difficult.value);
+
         PlayRound(this.roundSequence, this.difficult);
       },
 
@@ -147,7 +148,6 @@
 
   #app {
     position: absolute;
-    display: flex;
 
     top: 50%;
     left: 50%;
@@ -160,6 +160,12 @@
       > div {
         margin: 10px;
       }
+    }
+  }
+
+  @media (min-width: 500px) {
+    #app {
+      display: flex;
     }
   }
 
