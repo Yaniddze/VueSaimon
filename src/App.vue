@@ -129,6 +129,8 @@
           if (CompareSequences(this.selectedButtons, this.roundSequence)) {
             this.round += 1;
           } else {
+            this.roundSequence = [];
+            this.selectedButtons = [];
             this.round = 0;
           }
         }

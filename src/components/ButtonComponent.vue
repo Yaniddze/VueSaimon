@@ -32,7 +32,7 @@
 
     mounted(): void {
       this.button.PlayAudio = () => {
-        new Audio(`file://${this.audioUrl}`).play();
+        new Audio(this.audioUrl).play();
 
         this.playing = true;
 
