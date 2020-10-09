@@ -1,5 +1,7 @@
 # simon
 
+https://yaniddze.github.io/VueSaimon/
+
 ## Project setup
 ```
 npm install
