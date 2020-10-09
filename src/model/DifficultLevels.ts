@@ -1,5 +1,19 @@
-export enum DifficultLevels {
-  Easy = 1500,
-  Normal = 1000,
-  Hard = 400,
+export type Difficult = {
+  title: string;
+  value: number;
 }
+
+export const DifficultLevels = [
+  {
+    title: 'Easy',
+    value: 1500,
+  },
+  {
+    title: 'Normal',
+    value: 1000,
+  },
+  {
+    title: 'Hard',
+    value: 400,
+  },
+];
