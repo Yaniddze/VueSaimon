@@ -130,7 +130,6 @@
             this.round += 1;
           } else {
             this.roundSequence = [];
-            this.selectedButtons = [];
             this.round = 0;
           }
         }
