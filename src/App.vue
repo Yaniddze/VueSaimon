@@ -39,7 +39,7 @@
 
     <div v-if="round === 0" >
       <div class="difficulties">
-        <DifficultSelector @click="handleDifficultChange"/>
+        <DifficultSelector @change="handleDifficultChange"/>
       </div>
 
       <div class="start-btn-holder">
@@ -57,7 +57,13 @@
   import ButtonComponent from '@/components/ButtonComponent.vue';
   import DifficultSelector from '@/components/DifficultSelector.vue';
 
-  import { SimonButton, DifficultLevels } from '@/model';
+  import {
+    SimonButton,
+    DifficultLevels,
+    CompareSequences,
+    GenerateSequence,
+    PlayRound,
+  } from '@/model';
   import { Difficult } from '@/model/DifficultLevels';
 
   export default Vue.extend({
@@ -76,6 +82,8 @@
           new SimonButton('yellow'),
         ],
         locked: false,
+        selectedButtons: [] as SimonButton[],
+        roundSequence: [] as SimonButton[],
         round: 0,
         difficult: DifficultLevels[0],
       };
@@ -83,7 +91,9 @@
 
     methods: {
       handleClick(btn: SimonButton) {
-        if (!this.locked) {
+        if (this.round > 0 && !this.locked) {
+          this.selectedButtons.push(btn);
+
           btn.PlayAudio();
         }
       },
@@ -96,6 +106,31 @@
         event.preventDefault();
 
         this.round = 1;
+      },
+    },
+
+    watch: {
+      round() {
+        if (this.round === 0) return;
+        this.selectedButtons = [];
+        this.locked = true;
+
+        this.roundSequence = GenerateSequence(this.roundSequence, this.buttons);
+
+        setTimeout(() => {
+          this.locked = false;
+        }, this.round * this.difficult.value);
+        PlayRound(this.roundSequence, this.difficult);
+      },
+
+      selectedButtons() {
+        if (this.selectedButtons.length === this.round) {
+          if (CompareSequences(this.selectedButtons, this.roundSequence)) {
+            this.round += 1;
+          } else {
+            this.round = 0;
+          }
+        }
       },
     },
   });

@@ -1,17 +1,12 @@
 import { SimonButton } from '@/model/SimonButton';
 
-export function GenerateSequence(buttons: SimonButton[], length: number): SimonButton[] {
-  if (length < 1) return [];
+export function GenerateSequence(
+  oldSequence: SimonButton[], buttons: SimonButton[],
+): SimonButton[] {
+  const rand = Math.floor(Math.random() * buttons.length);
+  const btn = buttons[rand];
 
-  const buttonsLength = buttons.length;
-
-  const result: SimonButton[] = [];
-
-  for (let i = 0; i < length; i++) {
-    const rand = Math.floor(Math.random() * buttonsLength);
-    const btn = buttons[rand];
-    result.push(btn);
-  }
+  const result: SimonButton[] = [...oldSequence, btn];
 
   return result;
 }
