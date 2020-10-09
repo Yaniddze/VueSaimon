@@ -15,24 +15,24 @@
         <ButtonComponent
           @click="handleClick"
           :button="buttons[0]"
-          audio-url="http://www.kellyking.me/projects/simon/sounds/1.mp3"
+          audio-url="./1.mp3"
         />
         <ButtonComponent
           @click="handleClick"
           :button="buttons[1]"
-          audio-url="http://www.kellyking.me/projects/simon/sounds/2.mp3"
+          audio-url="./2.mp3"
         />
       </div>
       <div>
         <ButtonComponent
           @click="handleClick"
           :button="buttons[2]"
-          audio-url="http://www.kellyking.me/projects/simon/sounds/3.mp3"
+          audio-url="./3.mp3"
         />
         <ButtonComponent
           @click="handleClick"
           :button="buttons[3]"
-          audio-url="http://www.kellyking.me/projects/simon/sounds/4.mp3"
+          audio-url="./4.mp3"
         />
       </div>
     </div>

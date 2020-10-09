@@ -26,14 +26,13 @@
 
     data() {
       return {
-        audio: new Audio(this.audioUrl),
         playing: false,
       };
     },
 
     mounted(): void {
       this.button.PlayAudio = () => {
-        this.audio.play();
+        new Audio(`file://${this.audioUrl}`).play();
 
         this.playing = true;
 
