@@ -13,8 +13,8 @@ module.exports = {
   },
   rules: {
     'no-trailing-spaces': 'off',
-    'vue/script-indent': ["error", 2, { "baseIndent": 1 }],
-    'indent': 'off',
+    'vue/script-indent': ['error', 2, { baseIndent: 1 }],
+    indent: 'off',
     'no-plusplus': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -26,7 +26,7 @@ module.exports = {
         'class-methods-use-this': 'off',
         'no-plusplus': 'off',
         'import/prefer-default-export': 'off',
-      }
-    }
-  ]
+      },
+    },
+  ],
 };

@@ -1,6 +1,12 @@
 <template>
   <div id="app">
     <div>
+      <div v-if="showAlert">
+        <AlertMessage
+          @click="handleAlertSubmit"
+          message="Вы проиграли"
+        />
+      </div>
       <div class="round">
         <div>
           Раунд {{ round }}
@@ -37,7 +43,7 @@
       </div>
     </div>
 
-    <div v-if="round === 0" >
+    <div v-if="round === 0 && !showAlert" >
       <div class="difficulties">
         <DifficultSelector @change="handleDifficultChange"/>
       </div>
@@ -54,6 +60,7 @@
 
 <script lang="ts">
   import Vue from 'vue';
+  import AlertMessage from '@/components/AlertMessage.vue';
   import ButtonComponent from '@/components/ButtonComponent.vue';
   import DifficultSelector from '@/components/DifficultSelector.vue';
 
@@ -71,6 +78,7 @@
     components: {
       ButtonComponent,
       DifficultSelector,
+      AlertMessage,
     },
 
     data() {
@@ -85,6 +93,7 @@
         selectedButtons: [] as SimonButton[],
         roundSequence: [] as SimonButton[],
         round: 0,
+        showAlert: false,
         difficult: DifficultLevels[0],
       };
     },
@@ -106,6 +115,10 @@
         event.preventDefault();
 
         this.round = 1;
+      },
+
+      handleAlertSubmit() {
+        this.showAlert = false;
       },
     },
 
@@ -131,6 +144,7 @@
           } else {
             this.roundSequence = [];
             this.round = 0;
+            this.showAlert = true;
           }
         }
       },
