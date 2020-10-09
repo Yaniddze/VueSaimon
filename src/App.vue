@@ -5,6 +5,10 @@
         <div>
           Раунд {{ round }}
         </div>
+
+        <div v-if="round > 0">
+          Сложность {{ difficult.title }}
+        </div>
       </div>
 
       <div>
@@ -33,8 +37,16 @@
       </div>
     </div>
 
-    <div class="difficulties">
-      <DifficultSelector @click="handleDifficultChange"/>
+    <div v-if="round === 0" >
+      <div class="difficulties">
+        <DifficultSelector @click="handleDifficultChange"/>
+      </div>
+
+      <div class="start-btn-holder">
+        <button @click="handleStart">
+          Старт
+        </button>
+      </div>
     </div>
 
   </div>
@@ -79,6 +91,12 @@
       handleDifficultChange(difficult: Difficult) {
         this.difficult = difficult;
       },
+
+      handleStart(event: MouseEvent) {
+        event.preventDefault();
+
+        this.round = 1;
+      },
     },
   });
 </script>
@@ -117,5 +135,26 @@
 
   .difficulties {
     margin-top: 40px;
+
+    > div > div {
+      margin: 10px;
+    }
+  }
+
+  .start-btn-holder {
+    margin-left: 20px;
+
+    button {
+      border: none;
+      background: green;
+      color: white;
+      padding: 10px;
+      width: 75px;
+      font-size: 16px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 </style>
